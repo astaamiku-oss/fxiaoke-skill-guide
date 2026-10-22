@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f4">
+  <meta name="description" content="给电销同事的 AI 技能使用指南。看懂筛选与查重流程，下载内部试用包，复制一句话开始使用。">
+  <title>电销 AI 技能使用中心 · 团队使用指南</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到正文</a>
+  <svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 3h13a1 1 0 0 1 1 1v17H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 14h14M7 3v14M10 7h5m-5 4h4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="9" cy="18" r="2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 1 1 4 3c-1 .5-1 1-1 2m0 3h.01"/></symbol>
+  </defs></svg>
+
+  <aside class="sidebar">
+    <a class="brand" href="#overview"><span class="brand-mark">S<span>✦</span></span><span>电销 AI 技能<span class="brand-sub">团队使用手册</span></span></a>
+    <div class="workspace-label"><span class="small-dot"></span> OceanBase · 内部团队</div>
+    <nav aria-label="页面导航">
+      <span class="nav-label">从这里开始</span>
+      <a class="nav-link active" href="#overview"><svg><use href="#i-book"/></svg>认识这个技能</a>
+      <a class="nav-link" href="#demo"><svg><use href="#i-play"/></svg>看一遍怎么用<span class="nav-tag">互动</span></a>
+      <a class="nav-link" href="#start"><svg><use href="#i-download"/></svg>安装与第一次使用</a>
+      <span class="nav-label second-label">日常工作</span>
+      <a class="nav-link" href="#prompts"><svg><use href="#i-copy"/></svg>直接复制的指令</a>
+      <a class="nav-link" href="#rules"><svg><use href="#i-sliders"/></svg>规则与个人偏好</a>
+      <a class="nav-link" href="#faq"><svg><use href="#i-help"/></svg>遇到问题</a>
+    </nav>
+    <div class="sidebar-note"><span class="note-icon">✧</span><p>不用学会写提示词。<br>先把你要做的事说清楚。</p><a href="#prompts">试试第一句话 <span>↗</span></a></div>
+    <div class="sidebar-bottom"><span class="status-dot"></span> 内部试用版 <span class="mono">v0.1.0</span></div>
+  </aside>
+
+  <div class="page">
+    <header class="topbar"><div class="breadcrumb"><svg><use href="#i-book"/></svg><span>团队知识库</span><span class="slash">/</span><strong>纷享销客电销助手</strong></div><span class="private-badge"><svg><use href="#i-lock"/></svg>内部试用</span></header>
+    <main id="main">
+      <section id="overview" class="hero section-anchor">
+        <div class="hero-copy"><span class="eyebrow">给电销同事的一份小指南</span><h1>把重复的操作，<br>交给你的 <span class="ink-underline">AI 助手。</span></h1><p class="hero-description">你负责判断客户，AI 帮你筛选线索、核查归属、整理未接通记录。<br class="desktop-break">从一句话开始，把时间留给真正的沟通。</p><div class="hero-actions"><a href="#start" class="button primary">第一次使用 <svg><use href="#i-arrow"/></svg></a><a href="#demo" class="button quiet"><svg><use href="#i-play"/></svg>先看一遍演示</a></div><p class="hero-footnote">自己的账号 · 自己的偏好 · 关键操作有明确边界</p></div>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 330 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M65 225c-49-44-25-158 43-185s165-4 181 76-70 166-147 150" fill="#eeedeb"/>
+            <g class="paper-float"><path d="m100 42 128 13-12 177-128-13Z" fill="white" stroke="#242321" stroke-width="2.5" stroke-linejoin="round"/><path d="m112 34 129 14-13 178-128-14Z" fill="white" stroke="#242321" stroke-width="2.5" stroke-linejoin="round"/><path d="m130 78 68 7m-71 18 83 9m-86 19 61 6" stroke="#242321" stroke-width="3" stroke-linecap="round"/><path d="m123 159 19 2-2 19-19-2Z" fill="#e6f3fe" stroke="#242321" stroke-width="2"/><path d="m126 168 4 5 10-11m14 8 45 5" stroke="#242321" stroke-width="2.5" stroke-linecap="round"/><path d="m181 42 2-13m31 16 7-14" stroke="#242321" stroke-width="2.5" stroke-linecap="round"/></g>
+            <path d="M45 210c21-23 42-9 58 0l26 9-9 35-62-10Z" fill="#e6f3fe" stroke="#242321" stroke-width="2.5"/><path d="m105 214 35 7 32-5c8-1 10 10 2 13l-24 5 15 2c11 2 11 11 0 13l-42 5-12-4" fill="white" stroke="#242321" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <g class="spark-float"><path d="m263 84 6 12 13 3-11 9-1 13-11-8-13 3 4-13-7-11 14 1Z" fill="#ffb110" stroke="#242321" stroke-width="2"/></g>
+            <path d="m63 73-14-8m12 25-19 1m218 92 18 4m-22 8 12 12" stroke="#242321" stroke-width="2.5" stroke-linecap="round"/>
+            <g transform="rotate(-9 65 144)"><rect x="29" y="119" width="76" height="46" rx="9" fill="#fff" stroke="#242321" stroke-width="2"/><path d="m45 142 7 7 16-16" stroke="#0075de" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M78 134h12m-12 9h8" stroke="#242321" stroke-width="2" stroke-linecap="round"/></g>
+          </svg><span class="art-caption">少一点点击，多一点沟通。</span>
+        </div>
+      </section>
+
+      <div class="capability-strip" aria-label="技能的四种工作场景"><a href="#prompts" data-prompt-link="find"><span>01</span> 按条件找线索 <svg><use href="#i-search"/></svg></a><a href="#prompts" data-prompt-link="duplicate"><span>02</span> 查重与看归属 <svg><use href="#i-check"/></svg></a><a href="#prompts" data-prompt-link="claim"><span>03</span> 领取指定线索 <svg><use href="#i-lock"/></svg></a><a href="#prompts" data-prompt-link="failed"><span>04</span> 写回未接通结果 <svg><use href="#i-book"/></svg></a></div>
+
+      <section id="demo" class="section-anchor section-block">
+        <div class="section-heading"><div><span class="eyebrow">SHOW, DON'T TELL</span><h2>先看一遍，它是怎么工作的。</h2><p>点播放，跟着 AI 走一遍。你也可以随时暂停，查看每一步。</p></div><span class="handwritten">试着点一点 ↙</span></div>
+        <div class="demo-tabs" role="tablist" aria-label="演示场景"><button id="tab-find" class="demo-tab selected" role="tab" aria-selected="true" aria-controls="demo-panel" data-demo="find">筛选 → 查重 → 领取</button><button id="tab-failed" class="demo-tab" role="tab" aria-selected="false" aria-controls="demo-panel" data-demo="failed" tabindex="-1">未接通 → 两项写回</button><span class="example-label"><span></span>交互演示 · 示例数据</span></div>
+        <div id="demo-panel" class="demo-shell" role="tabpanel" aria-labelledby="tab-find">
+          <div class="demo-top"><span class="traffic-lights"><i></i><i></i><i></i></span><span>你的 AI 工作区</span><span class="demo-connection"><span class="status-dot"></span>模拟环境</span></div>
+          <div class="demo-body">
+            <div class="agent-panel"><div class="panel-label"><span class="agent-avatar">✦</span> AI 助手 <span class="small-muted">正在演示</span></div><div class="user-bubble" id="demo-request"></div><div class="agent-response"><div class="thinking-label"><span class="pulse-dot"></span><span id="demo-phase"></span></div><p id="demo-narration"></p></div><div class="agent-log" id="demo-log"></div><div class="agent-summary" id="demo-summary"></div></div>
+            <div class="crm-panel"><div class="mock-breadcrumb"><span>纷享销客</span><span>/</span><strong id="crm-title">线索池</strong><span class="mock-example">示例</span></div><div id="crm-content"></div><div id="demo-note" class="demo-note"></div></div>
+          </div>
+          <div class="demo-timeline" id="demo-timeline" aria-label="演示步骤"></div>
+          <div class="demo-controls"><button id="play-demo" class="button primary small"><span id="play-symbol">▶</span><span id="play-label">播放演示</span></button><button id="next-demo" class="button small plain">下一步 →</button><button id="reset-demo" class="text-button" aria-label="重新开始演示">↺ 重播</button><span class="step-counter" id="step-counter">01 / 05</span></div>
+        </div>
+        <p class="caption"><svg><use href="#i-help"/></svg>这是按技能规则制作的交互动画，使用虚构线索；不是 CRM 实录。页面内的操作不会触及真实客户。</p>
+      </section>
+
+      <section id="start" class="section-anchor section-block">
+        <div class="section-heading"><div><span class="eyebrow">YOUR FIRST RUN</span><h2>第一次用，跟着这三步。</h2><p>准备一个能操作本机文件的 AI 工具，以及你自己的纷享销客账号。</p></div><span class="version-badge">v0.1.0 · 内部试用</span></div>
+        <div class="install-layout"><div class="install-steps">
+          <div class="install-step"><span class="step-number">1</span><div><h3>选好你在用的工具</h3><p>我们会把安装指令替你填好。</p><div class="choice-row" role="group" aria-label="电脑系统"><button class="os-choice selected" data-os="mac" aria-pressed="true">macOS</button><button class="os-choice" data-os="windows" aria-pressed="false">Windows</button></div><label for="agent-select" class="field-label">你正在使用的 AI</label><select id="agent-select"><option value="codex">Codex</option><option value="qoder">Qoder</option><option value="claude">Claude Code</option><option value="pi">Pi</option></select><p class="platform-note" id="platform-note">当前包已做离线检查；新用户 Mac 全流程仍需试用验收。</p></div></div>
+          <div class="install-step"><span class="step-number">2</span><div><h3>下载技能包，解压</h3><p>把解压后的文件夹交给你的 AI。</p><a class="button plain download-button" href="downloads/fxiaoke-team-20261021.zip" download><svg><use href="#i-download"/></svg>下载内部试用包 <span>ZIP</span></a><span class="download-meta">约 50 KB · 2026.10.21 · 不含客户数据与登录态</span></div></div>
+          <div class="install-step"><span class="step-number">3</span><div><h3>复制右侧这段话，发给 AI</h3><p>AI 会读取说明、安装技能，再引导你登录和检查权限。登录步骤由你本人完成。</p></div></div>
+        </div><div class="install-note"><div class="note-heading"><span>↗</span><strong>发给你的 AI</strong><span class="mini-badge" id="install-target">macOS / Codex</span></div><p id="install-prompt"></p><button id="copy-install" class="button primary"><svg><use href="#i-copy"/></svg>复制安装指令</button><div class="note-divider"></div><h4>安装好之后，再说一句</h4><div class="first-prompt"><p>检查我的纷享销客登录状态和公共库权限。只做只读检查，先不要领取或录入。</p><button class="icon-button" data-copy="检查我的纷享销客登录状态和公共库权限。只做只读检查，先不要领取或录入。" aria-label="复制首次检查指令"><svg><use href="#i-copy"/></svg></button></div><p class="small-muted">普通网页聊天窗口不能直接运行这个包。请使用具备本机文件和命令操作能力的 AI 工具。</p></div></div>
+      </section>
+
+      <section id="prompts" class="section-anchor section-block">
+        <div class="section-heading"><div><span class="eyebrow">SAY IT IN YOUR OWN WORDS</span><h2>不用背命令。说清楚，就可以。</h2><p>挑一个工作场景，改成你的条件，再把这句话发给 AI。</p></div></div>
+        <div class="prompt-workbench"><div class="prompt-menu" role="tablist" aria-label="指令场景" aria-orientation="vertical">
+          <button id="prompt-tab-find" class="prompt-option selected" data-prompt="find" role="tab" aria-controls="prompt-panel" aria-selected="true"><span>⌕</span><span>找一批线索<small>日期、职位、积分、公司</small></span><b>↗</b></button>
+          <button id="prompt-tab-duplicate" class="prompt-option" data-prompt="duplicate" role="tab" aria-controls="prompt-panel" aria-selected="false" tabindex="-1"><span>◎</span><span>核查一条线索<small>两类查重、负责人、待核项</small></span><b>↗</b></button>
+          <button id="prompt-tab-claim" class="prompt-option" data-prompt="claim" role="tab" aria-controls="prompt-panel" aria-selected="false" tabindex="-1"><span>↳</span><span>领取选定线索<small>明确 ID 后，再提交</small></span><b>↗</b></button>
+          <button id="prompt-tab-failed" class="prompt-option" data-prompt="failed" role="tab" aria-controls="prompt-panel" aria-selected="false" tabindex="-1"><span>☏</span><span>记录电话未接通<small>日常记录 + SDR 呼出状态</small></span><b>↗</b></button>
+          <button id="prompt-tab-history" class="prompt-option" data-prompt="history" role="tab" aria-controls="prompt-panel" aria-selected="false" tabindex="-1"><span>↶</span><span>看看之前写了什么<small>基本信息与最新跟进摘要</small></span><b>↗</b></button>
+          <button id="prompt-tab-preferences" class="prompt-option" data-prompt="preferences" role="tab" aria-controls="prompt-panel" aria-selected="false" tabindex="-1"><span>⚙</span><span>设置我的默认偏好<small>只记住你主动要求的条件</small></span><b>↗</b></button>
+        </div><div id="prompt-panel" class="prompt-detail" role="tabpanel" aria-labelledby="prompt-tab-find"><div class="prompt-detail-top"><span id="prompt-category" class="tag blue">只读查询</span><span class="small-muted">自然语言示例</span></div><h3 id="prompt-title"></h3><div id="prompt-fields"></div><blockquote id="prompt-text"></blockquote><div class="prompt-detail-actions"><button id="copy-prompt" class="button primary small"><svg><use href="#i-copy"/></svg>复制这句话</button><span class="copy-hint">发给已安装技能的 AI</span></div><div class="expected-result"><span>你会得到</span><p id="prompt-result"></p></div><p id="prompt-boundary" class="prompt-boundary"></p></div></div>
+      </section>
+
+      <section id="rules" class="section-anchor section-block">
+        <div class="section-heading"><div><span class="eyebrow">A SHARED TOOL. YOUR OWN WAY.</span><h2>团队共用方法，偏好留给自己。</h2><p>团队版保留可靠的操作规则，把制作者的个人习惯交还给每位同事。</p></div></div>
+        <div class="rules-grid"><article class="rule-card"><span class="rule-icon blue">✓</span><h3>大家都保留的规则</h3><ul><li>同时查重复线索与重复客户</li><li>领取前实时检查归属</li><li>只领取本次明确授权的 ID</li><li>提交后回读，核对实际结果</li><li>未接通记录防重复，保留原记录</li></ul><span class="rule-foot">这些规则始终生效</span></article><article class="rule-card"><span class="rule-icon yellow">⚙</span><h3>你可以自己设置</h3><ul><li>线索日期、职位、公司关键词</li><li>是否只看近三个月非零积分</li><li>是否要求填写公司</li><li>伙伴模式与重点关注负责人</li><li>“以后默认”才保存为个人偏好</li></ul><span class="rule-foot">本次要求优先于已存偏好</span></article><article class="rule-card"><span class="rule-icon peach">↗</span><h3>团队包不带这些内容</h3><ul><li>制作者的固定日期与职位门槛</li><li>制作者的个人负责人名单</li><li>个人登录态与账号凭证</li><li>历史客户结果与任务进度</li><li>个人语雀地址与保存习惯</li></ul><span class="rule-foot">每个人从自己的账号开始</span></article></div>
+        <div class="boundary-note"><svg><use href="#i-lock"/></svg><div><strong>查不到，不代表没有负责人。</strong><p>结果不完整、归属不明确或提交结果不确定时，AI 会保留“待确认”并停止后续提交。查询授权也不会自动变成领取授权。</p></div></div>
+        <details class="capability-details"><summary>当前版本的能力边界 <span>哪些能用，哪些还在补齐？</span></summary><div class="table-scroll"><table class="capability-table"><thead><tr><th>功能</th><th>当前情况</th><th>说明</th></tr></thead><tbody><tr><td>条件查询、基础详情、两类查重</td><td><span class="tag blue">已封装</span></td><td>仍需本人的登录态和公共库权限</td></tr><tr><td>指定 ID 领取、未接通两项写回</td><td><span class="tag blue">已封装</span></td><td>明确授权后执行；提交后回读验证</td></tr><tr><td>页面上的复杂筛选组合</td><td><span class="tag yellow">需现场核验</span></td><td>AI 可按页面操作，未逐一验证所有控件和组合</td></tr><tr><td>最新跟进摘要</td><td><span class="tag blue">可读取</span></td><td>不等于完整的历史动态</td></tr><tr><td>完整历史、任意字段修改、退回与删除</td><td><span class="tag neutral">未实现</span></td><td>当前包未提供这些通用能力</td></tr><tr><td>Windows 新用户全流程</td><td><span class="tag yellow">真机待验证</span></td><td>已做兼容处理与离线检查，仍需实际安装验收</td></tr></tbody></table></div><p class="validation-note">现有技能包验证：32 项 Python 测试、8 个领取场景、15 个未接通场景及 7 项精确匹配检查，均使用模拟数据。它们不代表新用户环境的 CRM 全流程验收。</p></details>
+      </section>
+
+      <section id="faq" class="section-anchor section-block faq-section"><div class="section-heading"><div><span class="eyebrow">WHEN YOU GET STUCK</span><h2>卡住了，先看这里。</h2><p>把遇到的情况告诉 AI，不需要自己猜命令。</p></div></div><div class="faq-list">
+        <details><summary>一定要懂 AI 或代码，才能用吗？<span>+</span></summary><p>日常使用不用写代码。下载解压后，把安装指令和文件夹交给具备本机操作能力的 AI。安装时需要你本人完成登录或系统授权，之后用自然语言说明条件即可。</p></details>
+        <details><summary>这个网站能直接帮我领取真实线索吗？<span>+</span></summary><p>网站负责展示和提供使用指令。真实查询、领取、录入由你本机的 AI 通过 ego lite，在你自己的纷享销客账号下执行。这里的交互演示全部使用示例数据。</p></details>
+        <details><summary>页面里的筛选项，都可以直接让 AI 点吗？<span>+</span></summary><p>可以把想要的筛选条件直接说出来。日期、职位、公司和近三个月积分等已有查询支持；来源、表单类型、负责人等复杂页面条件，需要 AI 查看当时页面，再确认控件和选项。当前版本没有逐一测试所有筛选组合，不能保证每项都已稳定支持。</p></details>
+        <details><summary>能读到以前填写的跟进记录吗？<span>+</span></summary><p>当前可读取基础详情和最新跟进摘要。未接通任务会读取相关日常记录来防止重复发布，但通用的完整历史动态读取尚未实现。请让 AI 明确写出此次读取的范围，不把最新摘要当作全部历史。</p></details>
+        <details><summary>登录失效，或显示公共库为空怎么办？<span>+</span></summary><p>先让 AI 检查登录和公共库权限。登录失效时，由你本人在 ego lite 完成登录；权限不明时先核实。空结果也可能来自条件过窄或读取不完整，不能直接当作“没有线索”。</p></details>
+        <details><summary>Windows 提示找不到 ego / Python，怎么办？<span>+</span></summary><p>告诉 AI“检查我的 Python 和 ego lite 可执行入口，不要修改账号配置”。安装器会检查已有环境；当前 Windows 包要求可直接执行的 ego .exe 入口。仅有 .cmd/.bat 或兼容性问题时，停止并将错误原文反馈维护者。Windows 真机验收仍待完成。</p></details>
+        <details><summary>我已经装了旧版，或提交后没有看到结果？<span>+</span></summary><p>已有技能时先比较与备份，安装器不会强行覆盖。提交结果不明确时先查实际记录，不要重复点击，也不要删除进度文件来重试。把原始报错和发生步骤发给 AI，继续核实同一笔任务。</p></details>
+      </div></section>
+
+      <div class="closing-note"><span class="closing-star">✦</span><div><h2>先从一条只读查询开始。</h2><p>熟悉它怎么找、怎么核查，再把重复操作交给它。</p></div><a href="#start" class="button primary">开始使用 <svg><use href="#i-arrow"/></svg></a></div>
+      <footer><span>电销 AI 技能使用中心 <span class="footer-divider">/</span> OceanBase 内部团队</span><span>指南更新 2026.10.22 · <a href="#overview">回到顶部 ↑</a></span><p>技能包 v0.1.0-internal-preview · 供内部试用，尚未作为公开开源版本发布。视觉参考 Notion 风格，本站为独立团队指南。</p></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
