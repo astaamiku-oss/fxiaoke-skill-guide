@@ -80,56 +80,7 @@ document.querySelectorAll('[data-os]').forEach(button=>button.addEventListener('
 $('agent-select').addEventListener('change',updateInstall);
 $('copy-install').addEventListener('click',()=>copyText($('install-prompt').textContent));
 
-const prompts={
-  find:{title:'把筛选条件说具体一点',category:'只读查询',result:'带编号和详情链接的候选清单、近三个月积分，以及归属检查结果与待核风险。数量不足会如实说明。',boundary:'查询和列候选不会自动领取。近三个月积分与总积分是两个不同字段。'},
-  duplicate:{title:'先查清楚，再决定要不要领',category:'只读核查',result:'重复销售线索和重复客户两类结果、已有负责人，以及是否需要继续核实。',boundary:'缺少结果或负责人不明确时标为待确认，不能直接称为可领取。'},
-  claim:{title:'只领取你已经选定的线索',category:'明确授权后写入',result:'每条指定 ID 的实时归属核查、领取结果和回读验证；不合规或不确定项会停止。',boundary:'请用候选清单里的真实 ID 替换占位内容。不会自动更换候选或扩大领取范围。'},
-  failed:{title:'未接通的两项工作，一句话交代',category:'明确授权后写入',result:'将 SDR 呼出状态保存为重呼中，发布电话联系-未成功的日常记录，再分别核验。',boundary:'只根据你给的新反馈填写；已存在的同日同文记录不重复发布，也不覆盖以前的跟进记录。'},
-  history:{title:'了解最新跟进，不误当成全部历史',category:'读取范围有限',result:'线索基本信息、最新跟进摘要，并明确这次实际读取的范围。',boundary:'当前包未实现通用的完整历史动态读取；不要用最新摘要推断全部历史。'},
-  preferences:{title:'把你的常用条件，记成你的默认值',category:'保存个人偏好',result:'仅在你明确要求后保存个人偏好，并复述保存内容。下次的明确要求仍优先。',boundary:'团队默认不继承制作者的职位、积分门槛或个人名单；同公司去重默认开启。'}
-};
-let activePrompt='find';
-const draft={count:'3',role:'技术负责人',score:'nonzero',ids:''};
-function selectPrompt(key){
-  activePrompt=key;
-  const item=prompts[key];
-  document.querySelectorAll('[data-prompt]').forEach(b=>{const selected=b.dataset.prompt===key;b.classList.toggle('selected',selected);b.setAttribute('aria-selected',String(selected));b.tabIndex=selected?0:-1;});
-  $('prompt-panel').setAttribute('aria-labelledby',`prompt-tab-${key}`);
-  $('prompt-category').textContent=item.category;
-  $('prompt-category').className=`tag ${['claim','failed','history'].includes(key)?'yellow':'blue'}`;
-  $('prompt-title').textContent=item.title;
-  $('prompt-result').textContent=item.result;
-  $('prompt-boundary').textContent=item.boundary;
-  if(key==='find'){
-    $('prompt-fields').innerHTML=`<label class="prompt-field">想看几条<input id="filter-count" type="number" min="1" max="50" value="${draft.count}"></label><label class="prompt-field">优先职位<select id="filter-role"><option>技术负责人</option><option>架构师</option><option>CIO / CTO</option><option>创始人</option><option>不限定职位</option></select></label><label class="prompt-field">近三个月积分<select id="filter-score"><option value="nonzero">非零</option><option value="any">不限制</option></select></label>`;
-    $('filter-role').value=draft.role;$('filter-score').value=draft.score;
-    $('filter-count').addEventListener('input',event=>{draft.count=event.target.value;updatePromptText();});
-    $('filter-role').addEventListener('change',event=>{draft.role=event.target.value;updatePromptText();});
-    $('filter-score').addEventListener('change',event=>{draft.score=event.target.value;updatePromptText();});
-  }else if(['duplicate','claim','failed','history'].includes(key)){
-    $('prompt-fields').innerHTML=`<label class="prompt-field">填入你的线索 ID（可先留空）<input id="lead-ids" type="text" placeholder="在这里填入真实的 OB ID" value="${escape(draft.ids)}" autocomplete="off"></label>`;
-    $('lead-ids').addEventListener('input',event=>{draft.ids=event.target.value;updatePromptText();});
-  }else{$('prompt-fields').innerHTML='';}
-  updatePromptText();
-}
-function updatePromptText(){
-  const ids=draft.ids.trim()||'【填入线索 OB ID】';
-  let text;
-  if(activePrompt==='find'){
-    const count=Math.max(1,Math.min(50,Number(draft.count)||3));
-    const position=draft.role==='不限定职位'?'不限定职位':`优先${draft.role}`;
-    text=`用纷享销客线索技能，帮我从公共库找 ${count} 条线索，${position}，${draft.score==='nonzero'?'近三个月积分非零':'本次不限制近三个月积分'}。只筛选和查重，先列带详情链接的候选，说明负责人及待核风险，不领取。${draft.score==='nonzero'?'数量不足直接说明，不用零分或积分不明的线索补齐。':''}`;
-  }else if(activePrompt==='duplicate')text=`帮我核查线索 ${ids}，同时检查重复销售线索和重复客户，列出负责人和待确认项。只读查询，不领取、不修改。`;
-  else if(activePrompt==='claim')text=`请只领取我这次明确选定的线索：${ids}。提交前逐条重新核查重复线索、重复客户和负责人，核查通过后再领取并回读验证。结果不确定时停止，不要换成其他线索，也不要重复提交。`;
-  else if(activePrompt==='failed')text=`线索 ${ids} 本次电话未接通。请发布“电话联系-未成功”日常记录，并将 SDR 呼出状态保存为“重呼中”，完成后分别回读验证。保留之前的跟进记录；同日同文已完成的不重复发布。`;
-  else if(activePrompt==='history')text=`帮我读取线索 ${ids} 的基本信息和最新跟进摘要，说明目前能看到的内容及读取范围。只读，不修改。若没有完整历史，就明确说明，不把最新摘要当作全部历史。`;
-  else text='以后默认优先找技术负责人和架构师，近三个月积分非零，并要求有公司名称。请将这些保存为我的个人筛选偏好，说明具体保存了什么。本次不查询、不领取，也不更改别人的偏好。';
-  $('prompt-text').textContent=text;
-}
-document.querySelectorAll('[data-prompt]').forEach(button=>button.addEventListener('click',()=>selectPrompt(button.dataset.prompt)));
-document.querySelectorAll('[data-prompt-link]').forEach(link=>link.addEventListener('click',()=>selectPrompt(link.dataset.promptLink)));
-$('copy-prompt').addEventListener('click',()=>copyText($('prompt-text').textContent));
-
+/* Scenario workbench is implemented in prompts.js. */
 // Keyboard traversal for both tab groups; the mobile prompt grid also accepts arrows.
 document.querySelectorAll('[role="tablist"]').forEach(list=>list.addEventListener('keydown',event=>{
   const tabs=[...list.querySelectorAll('[role="tab"]')];
@@ -146,4 +97,4 @@ const observer=new IntersectionObserver(entries=>{
 },{rootMargin:'-8% 0px -65% 0px',threshold:0});
 document.querySelectorAll('.section-anchor').forEach(section=>observer.observe(section));
 
-renderDemo();updateInstall();selectPrompt('find');
+renderDemo();updateInstall();
